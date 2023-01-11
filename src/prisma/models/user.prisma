@@ -1,0 +1,27 @@
+model User {
+    user_id             String      @id @default(uuid())
+    email               String      
+    mobile              String?
+    name                String?
+    password_hash       String
+    role                UserRole    @default(no_data)
+    company_id          Int         @default(0)
+    customer_id         String?     @unique
+    attemptpass_count   Int?        @default(0)
+    reset_code          String      @default("")
+    is_emailverified    Boolean     @default(false)
+    is_mobileverified   Boolean     @default(false)
+    user_status         UserStatus  @default(inactive_waitverify)
+    created_at          DateTime    @default(now())
+    updated_at          DateTime    @default(now())
+    deleted_at          DateTime?
+    favs                Json
+    Customer            Customer?   @relation(fields: [customer_id], references: [customer_id])
+    loggers             Logger[]
+    from_inquiries      Inquiry[]   @relation("FromUser")
+    assign_inquiries    Inquiry[]   @relation("AssignUser")
+    notifications       Notification[]
+
+    @@unique([email, mobile])
+    @@map("user")
+}

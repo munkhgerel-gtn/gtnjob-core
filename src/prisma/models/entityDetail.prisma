@@ -1,0 +1,29 @@
+model EntityDetail {
+    entity_detail_id         String    @id @default(uuid())
+    entity_id                Int?
+    entity                   Entity?   @relation(fields: [entity_id], references: [entity_id])
+    establishment            DateTime?
+    capital                  Int?
+    numberof_employees       Int?
+    business_performance     Json?
+    representative_telephone String?
+    representative           String?
+    average_age              Int?
+    foreign_capitalratio     Int?
+    homepage                 String?
+    business_summary         String?
+    organizational_structure String?
+    company_sales            String?
+    workplace_environment    String?
+    shareholder              Json?
+    related_company          Int?
+    recruitment_personname   String?
+    memo                     String?
+    business_status          String?
+    created_at               DateTime  @default(now())
+    updated_at               DateTime  @default(now())
+    created_by               String?
+    updated_by               String?
+
+    @@map("entity_detail")
+}

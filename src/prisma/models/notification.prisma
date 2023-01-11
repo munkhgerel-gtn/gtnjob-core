@@ -1,0 +1,13 @@
+model Notification {
+  notifiation_id        String @id @default(uuid())
+  user_id               String
+  User                  User  @relation(fields: [user_id], references: [user_id])
+  link                  String
+  message               String
+  is_new                Boolean @default(true)
+  is_badge              Boolean @default(true)
+  created_at            DateTime @default(now())
+  created_by            String
+
+  @@map("notifications")
+}

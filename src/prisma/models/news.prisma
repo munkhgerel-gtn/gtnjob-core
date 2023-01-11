@@ -1,0 +1,17 @@
+model News {
+  news_id         String        @id @default(uuid())
+  page_id         Int
+  pages           Pages         @relation(fields: [page_id], references: [page_id])
+  title           String
+  brief           String
+  image_id        String
+  content         String
+  is_top          Boolean   @default(false)
+  is_publish      Boolean   @default(false)
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now())
+  created_by      String
+  update_by       String
+
+  @@map("web_news")
+}

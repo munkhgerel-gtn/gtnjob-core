@@ -1,0 +1,781 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+  output        = "../../dist/client"
+}
+
+generator zod {
+  provider    = "zod-prisma"
+  output      = "../../../../../contract/src/models"
+  modelCase   = "PascalCase"
+  modelSuffix = "Model"
+}
+
+// generator dbml {
+//   provider = "prisma-dbml-generator"
+// }
+
+// generator prismaClassGenerator {
+//   provider = "prisma-class-generator"
+//   dryRun   = "false"
+//   output   = "../../src/_gen/prisma-class"
+// }
+model ActionRole {
+  action_role_id  String     @id @default(uuid())
+  controller_path String?
+  action_user     UserAction @default(no_data)
+  role            UserRole   @default(no_data)
+  is_can          Boolean
+  is_company      Boolean
+  parent_id       String?
+  created_at      DateTime   @default(now())
+  updated_at      DateTime   @default(now())
+  created_by      String?
+  updated_by      String?
+
+  @@map("action_role")
+}
+model Customer {
+  customer_id             String                  @id @default(uuid())
+  first_name              String
+  last_name               String
+  first_name_kana         String
+  last_name_kana          String
+  gender                  Gender?                 @default(no_data)
+  birth_date              DateTime?
+  spouse                  Json?
+  family_size             Int?
+  email                   String?
+  mobile                  String?
+  phone                   String?
+  profile_image           String?
+  cv_file                 String?
+  resume_file             String?
+  prefecture              Json?
+  post_code               String?
+  city                    String?
+  district                String?
+  address                 String?
+  address1                String?
+  nearest_station         String?
+  socials                 Json?
+  country                 String?
+  experienced_year        Int?
+  from_data               Int?
+  status_customer         CustomerStatus?         @default(no_data)
+  created_at              DateTime                @default(now())
+  updated_at              DateTime                @default(now())
+  created_by              String?
+  updated_by              String?
+  user                    User?
+  customer_visas          CustomerVisa[]
+  customer_jobdetails     CustomerJobDetail[]
+  customer_educations     CustomerEducation[]
+  customer_languages      CustomerLanguage[]
+  customer_qualifications CustomerQualification[]
+  customer_workhistories  CustomerWorkHistory[]
+  job_candidates          JobCandidate[]
+  customer_desired        CustomerDesired[]
+
+  @@map("customer")
+}
+
+model CustomerDesired {
+  desired_id      String    @id @default(uuid())
+  customer        Customer? @relation(fields: [customer_id], references: [customer_id])
+  customer_id     String?
+  occupation      Json[]
+  industry        Json[]
+  location        Json[]
+  career_level    Json[]
+  contract_type   Json[]
+  desired_company Json[]
+  time_to         String
+  annual_income   Int
+  created_at      DateTime  @default(now())
+  updated_at      DateTime  @default(now())
+  created_by      String?
+  updated_by      String?
+
+  @@map("customer_desired")
+}
+model CustomerEducation {
+  education_id     String    @id @default(uuid())
+  customer         Customer? @relation(fields: [customer_id], references: [customer_id])
+  customer_id      String?
+  country          String?
+  degree           Json?
+  entrollment_date DateTime?
+  graduate_date    DateTime?
+  is_current       Boolean?
+  school_id        Int?
+  school           Json?
+  faculty          String?
+  department       String?
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @default(now())
+  created_by       String?
+  updated_by       String?
+
+  @@map("customer_education")
+}
+/// Customer experience, 
+
+model CustomerExperience {
+  experience_id String             @id @default(uuid())
+  jobdetail_id  String
+  jobdetails    CustomerJobDetail  @relation(fields: [jobdetail_id], references: [jobdetail_id])
+  skill_id      Int
+  listitems     ReferenceListItems @relation(fields: [skill_id], references: [listitem_id])
+  over_year     Int?
+  created_at    DateTime           @default(now())
+  updated_at    DateTime?          @default(now())
+  created_by    String?
+  updated_by    String?
+
+  @@map("customer_experience")
+}
+
+/// Cutomer's one to one
+model CustomerJobDetail {
+  jobdetail_id         String               @id @default(uuid())
+  customer_id          String?
+  customer             Customer?            @relation(fields: [customer_id], references: [customer_id])
+  customer_experiences CustomerExperience[]
+  experienced_company  Int                  @default(0)
+  annual_income        Int?
+  has_management_exp   Boolean              @default(false)
+  created_at           DateTime             @default(now())
+  updated_at           DateTime             @default(now())
+  created_by           String?
+  updated_by           String?
+
+  @@map("customer_jobdetail")
+}
+model CustomerLanguage {
+  language_id       String         @id @default(uuid())
+  customer_id       String
+  customer          Customer       @relation(fields: [customer_id], references: [customer_id])
+  level             LanguageLevel? @default(no_data)
+  language          Int?
+  is_motherlanguage Boolean        @default(false)
+  certificate       Json?
+  created_at        DateTime       @default(now())
+  updated_at        DateTime?      @default(now())
+  created_by        String?
+  updated_b         String?
+
+  @@map("customer_language")
+}
+model CustomerQualification {
+  qualification_id String   @id @default(uuid())
+  customer_id      String
+  customers        Customer @relation(fields: [customer_id], references: [customer_id])
+  qualification    Json?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @default(now())
+  created_by       String?
+  updated_by       String?
+
+  @@map("customer_qualification")
+}
+model CustomerVisa {
+  visa_id             String      @id @default(uuid())
+  customer_id         String
+  customer            Customer    @relation(fields: [customer_id], references: [customer_id])
+  status_visa         StatusVisa? @default(no_data)
+  date_expire         DateTime?
+  country_citizenship String?
+  back_visafile       String?
+  front_visafile      String?
+  created_at          DateTime    @default(now())
+  updated_at          DateTime    @default(now())
+  created_by          String?
+  updated_by          String?
+
+  @@map("customer_visa")
+}
+
+model CustomerWorkHistory {
+  workhistory_id String       @id @default(uuid())
+  customer_id    String
+  customer       Customer     @relation(fields: [customer_id], references: [customer_id])
+  company_id     String?
+  company_info   Json?
+  occupation     Json?
+  industry       Json?
+  position       JobPosition? @default(no_data)
+  enter_date     DateTime?
+  leave_date     DateTime?
+  working_month  Int?
+  is_current     Boolean?
+  duties         String?
+  created_at     DateTime     @default(now())
+  updated_at     DateTime     @default(now())
+  created_by     String?
+  updated_by     String?
+
+  @@map("customer_workhistory")
+}
+model Dictionary {
+  dictionaries_id     String               @id @default(uuid())
+  dictionary_id       Int
+  language_code       String
+  dic_value           String
+  created_at          DateTime             @default(now())
+  reference_listitems ReferenceListItems[]
+
+  @@unique([dictionary_id, language_code], map: "Dictionary_dic_language_unique")
+  @@map("dictionary")
+}
+
+model Entity {
+  entity_id           Int                 @id @default(autoincrement())
+  name                String
+  kana                String?
+  logo                String?
+  // prefecture          Json?
+  // post_code           String?
+  // city                String?
+  // district            String?
+  // address             String?
+  // address1            String?
+  // nearest_station     String?
+  socials             Json?
+  gps                 Json?
+  contact_person      Json?
+  contact_details     Json?
+  is_system           Boolean             @default(false)
+  created_at          DateTime            @default(now())
+  updated_at          DateTime            @default(now())
+  created_by          String?
+  updated_by          String?
+  entity_details      EntityDetail[]
+  entity_branches     EntityBranch[]
+  entity_accountinfos EntityAccountInfo[]
+  inquiries           Inquiry[]           @relation("ToEntity")
+
+  @@map("entity")
+}
+
+model EntityAccountInfo {
+  entity_accountinfo_id String   @id @default(uuid())
+  entity_id             Int?
+  entity                Entity?  @relation(fields: [entity_id], references: [entity_id])
+  bank_code             String?
+  branch_code           String?
+  account_id            String?
+  is_default            Boolean?
+  created_at            DateTime @default(now())
+  updated_at            DateTime @default(now())
+  updated_by            String?
+  created_by            String?
+
+  @@map("entity_accountinfo")
+}
+model EntityBranch {
+  branch_id       Int      @id @default(autoincrement())
+  branch_name     String?
+  kana            String?
+  is_jeadquarter  Boolean  @default(false)
+  image           String?
+  prefecture      Json?
+  post_code       String?
+  city            String?
+  district        String?
+  address         String?
+  address1        String?
+  nearest_station String?
+  socials         Json?
+  gps             Json?
+  contact_person  Json?
+  contact_details Json?
+  created_at      DateTime @default(now())
+  updated_at      DateTime @default(now())
+  created_by      String?
+  updated_by      String?
+  entity          Entity   @relation(fields: [entity_id], references: [entity_id])
+  entity_id       Int
+  jobs            Job[]
+
+  @@map("entity_branch")
+}
+
+model EntityDetail {
+  entity_detail_id         String    @id @default(uuid())
+  entity_id                Int?
+  entity                   Entity?   @relation(fields: [entity_id], references: [entity_id])
+  establishment            DateTime?
+  capital                  Int?
+  numberof_employees       Int?
+  business_performance     Json?
+  representative_telephone String?
+  representative           String?
+  average_age              Int?
+  foreign_capitalratio     Int?
+  homepage                 String?
+  business_summary         String?
+  organizational_structure String?
+  company_sales            String?
+  workplace_environment    String?
+  shareholder              Json?
+  related_company          Int?
+  recruitment_personname   String?
+  memo                     String?
+  business_status          String?
+  created_at               DateTime  @default(now())
+  updated_at               DateTime  @default(now())
+  created_by               String?
+  updated_by               String?
+
+  @@map("entity_detail")
+}
+
+enum Gender {
+  no_data
+  male
+  female
+
+  @@map("gender_enum")
+}
+
+enum CustomerStatus {
+  no_data
+
+  @@map("customer_status_enum")
+}
+
+enum CustomerExperienced {
+  no_data
+  no_work
+  have_work
+  one_company
+
+  @@map("customer_experienced_enum")
+}
+
+enum StatusVisa {
+  no_data
+
+  @@map("customer_statusvisa_enum")
+}
+
+enum LanguageLevel {
+  no_data
+  vative
+  near_native
+  business
+  daily_conversation
+  greeting
+
+  @@map("language_level_enum")
+}
+
+enum JobPosition {
+  no_data
+  execute
+  manager
+  senior
+  staff
+  entry
+
+  @@map("job_position_enum")
+}
+
+enum UserRole {
+  no_data
+  gtn_super_admin
+  gtn_admin
+  company_super_admin
+  company_admin
+  company_user
+  job_seeker
+
+  @@map("user_role_enum")
+}
+
+enum UserStatus {
+  active
+  inactive_waitverify
+  inactive_changepass
+  suspended_attempt
+  suspended_admin
+  deleted
+
+  @@map("user_status_enum")
+}
+
+enum UserAction {
+  no_data
+  manage
+  create
+  read
+  update
+  delete
+
+  @@map("user_action_enum")
+}
+
+enum JobContractType {
+  no_data
+  full_time
+  part_time
+  contract
+  sub_contract
+  temporary
+  internship
+  other
+
+  @@map("job_contractype_enum")
+}
+
+enum InquiryStatus {
+  open
+  reply
+  closed
+
+  @@map("inquiry_status_enum")
+}
+
+enum SalaryType {
+  no_data
+  hourly_wage
+  daily_wage
+  monthly_salary
+  annual_salary
+
+  @@map("salary_type_enum")
+}
+
+enum JobPublish {
+  public
+  private
+
+  @@map("job_publish_enum")
+}
+
+enum EmploymentStatus {
+  employee
+  contract_employee
+  outsourcing
+
+  @@map("employment_status_enum")
+}
+
+enum Smoke {
+  no_data
+  yes__no_smoking_on_site
+  yes__no_smoking_indoors_and_smoking_area_set_up_outdoors
+  yes__no_smoking_indoors
+  yes__smoking_room_installed_indoors
+  yes__working_in_smoking_areas
+  no_smoking_allowed
+
+  @@map("smoke_enum")
+}
+
+enum FileSource {
+  content_image
+  page_image
+  user
+  user_avatar
+  user_image
+  user_cv
+  user_resume
+  user_portfolio
+  user_other
+  other
+
+  @@map("filesource_enum")
+}
+
+enum FileType {
+  image
+  video
+  pdf
+  gif
+  csv
+  other
+
+  @@map("filetype_enum")
+}
+
+enum ReqriutmentType {
+  direct
+  referral_company
+}
+model Files {
+  file_id     String     @id @default(uuid())
+  file_name   String
+  target_id   String
+  file_path   String
+  file_type   FileType
+  fiel_source FileSource
+  created_at  DateTime   @default(now())
+  created_by  String
+
+  @@map("file_uploads")
+}
+model Inquiry {
+  inquire_id       String         @id @default(uuid())
+  parent_id        String?
+  fromuser_id      String?
+  fromuser         User?          @relation("FromUser", fields: [fromuser_id], references: [user_id])
+  entity_id        Int?
+  entity           Entity?        @relation("ToEntity", fields: [entity_id], references: [entity_id])
+  assigned_user_id String?
+  assignUser       User?          @relation("AssignUser", fields: [assigned_user_id], references: [user_id])
+  subject          String
+  body             String
+  inquiry_status   InquiryStatus?
+  is_read          Boolean        @default(false)
+  is_answer        Boolean        @default(false)
+  created_at       DateTime       @default(now())
+  updated_at       DateTime       @default(now())
+  created_by       String?
+
+  @@map("inquiry")
+}
+
+model Job {
+  job_id     String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now()) @updatedAt
+  created_by String
+  updated_by String?
+
+  // basic information
+  job_publish      JobPublish
+  job_references   JobReferenceList[] // must references: [occupations, industries, prefectures, educations]; references: [benefits]       
+  location_details String?
+
+  // recruitment conditions
+  career_level        JobPosition[]
+  benefit_other       String?
+  smoke               Smoke[]
+  employment_status   EmploymentStatus
+  japanese_level      LanguageLevel
+  english_level       LanguageLevel
+  job_other_languages JobOtherLanguage[]
+  experienced_count   Int
+  age_min             Int?
+  age_max             Int?
+  set_age_reason      String?
+  recruitment_type    ReqriutmentType?
+
+  // applciation requirements
+  job_title           String
+  job_description     String
+  japanese_percentage Int?
+  must_condition      String
+  want_condition      String?
+  position_name       String?
+  working_hour        String
+  salary_type         SalaryType
+  salary_min          Int?
+  salary_max          Int?
+  salary_detail       String
+  day_off             String?
+  progress_detail     String
+  entity_branch_id    Int
+  expire_date         DateTime?
+
+  entity_branch  EntityBranch?    @relation(fields: [entity_branch_id], references: [branch_id])
+  job_candidates JobCandidate[]
+  JobRequirement JobRequirement[]
+
+  @@map("job")
+}
+
+model JobOtherLanguage {
+  job_other_language_id String        @id @default(uuid())
+  language_id           Int
+  language_level        LanguageLevel
+  job_id                String
+
+  job Job @relation(fields: [job_id], references: [job_id])
+
+  @@map("job_other_language")
+}
+
+model JobReferenceList {
+  job_reference_id       String @id @default(uuid())
+  job_id                 String
+  reference_list_id      Int
+  reference_list_item_id Int
+
+  job                 Job                @relation(fields: [job_id], references: [job_id])
+  reference_list      ReferenceList      @relation(fields: [reference_list_id], references: [list_id])
+  reference_list_item ReferenceListItems @relation(fields: [reference_list_item_id], references: [listitem_id])
+
+  @@map("job_reference")
+}
+model JobCandidate {
+  job_candidate_id String   @id @default(uuid())
+  job_id           String
+  job              Job      @relation(fields: [job_id], references: [job_id])
+  customer_id      String
+  customer         Customer @relation(fields: [customer_id], references: [customer_id])
+  candidate_status Int
+  created_at       DateTime @default(now())
+  updated_at       DateTime @default(now()) @updatedAt
+  created_by       String?
+  updated_by       String?
+
+  @@map("job_candidate")
+}
+model JobRequirement {
+  job_require_id String   @id @default(uuid())
+  job_id         String
+  jobs           Job      @relation(fields: [job_id], references: [job_id])
+  require_id     Int
+  require_detial Json?
+  created_at     DateTime @default(now())
+  updated_at     DateTime @default(now())
+  created_by     String?
+  updated_by     String?
+
+  @@map("job_requirement")
+}
+
+model SystemLangauge {
+  language_id   Int     @id @default(autoincrement())
+  language_code String  @unique
+  is_default    Boolean @default(false)
+
+  @@map("system_language")
+}
+
+model Logger {
+  log_id      String     @id @default(uuid())
+  action_user UserAction @default(no_data)
+  user_id     String?
+  User        User?      @relation(fields: [user_id], references: [user_id])
+  new_value   Json?
+  old_value   Json?
+  created_at  DateTime   @default(now())
+  updated_at  DateTime   @default(now())
+  created_by  String?
+  updated_by  String?
+
+  @@map("logger")
+}
+
+model News {
+  news_id    String   @id @default(uuid())
+  page_id    Int
+  pages      Pages    @relation(fields: [page_id], references: [page_id])
+  title      String
+  brief      String
+  image_id   String
+  content    String
+  is_top     Boolean  @default(false)
+  is_publish Boolean  @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @default(now())
+  created_by String
+  update_by  String
+
+  @@map("web_news")
+}
+model Notification {
+  notifiation_id String   @id @default(uuid())
+  user_id        String
+  User           User     @relation(fields: [user_id], references: [user_id])
+  link           String
+  message        String
+  is_new         Boolean  @default(true)
+  is_badge       Boolean  @default(true)
+  created_at     DateTime @default(now())
+  created_by     String
+
+  @@map("notifications")
+}
+
+model Pages {
+  page_id    Int      @id @default(autoincrement())
+  page_name  String
+  page_type  Int      @default(0)
+  created_at DateTime @default(now())
+  created_by String
+  news       News[]
+
+  @@map("web_pages")
+}
+model ReferenceList {
+  list_id          Int                  @id @default(autoincrement())
+  list_name        String
+  created_at       DateTime             @default(now())
+  listitems        ReferenceListItems[]
+  JobReferenceList JobReferenceList[]
+
+  @@map("reference_list")
+}
+model ReferenceListItems {
+  listitem_id               Int                  @id @default(autoincrement())
+  list_id                   Int
+  list                      ReferenceList        @relation(fields: [list_id], references: [list_id])
+  dictionary_id             Int
+  code                      String?
+  listitem_value            String?
+  parent_id                 Int?
+  value                     String?
+  created_at                DateTime             @default(now())
+  updated_at                DateTime             @default(now())
+  customer_experiences      CustomerExperience[]
+  Dictionary                Dictionary?          @relation(fields: [dictionaryDictionaries_id], references: [dictionaries_id])
+  dictionaryDictionaries_id String?
+  JobReferenceList          JobReferenceList[]
+
+  @@map("reference_listitem")
+}
+
+model ScoutFav {
+  scout_id   String   @id @default(uuid())
+  entity_id  Int?
+  branch_id  Int?
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [user_id])
+  job_id     String?
+  note       String
+  created_at DateTime @default(now())
+  created_by String
+
+  @@map("scout_fav")
+}
+model User {
+  user_id           String         @id @default(uuid())
+  email             String
+  mobile            String?
+  name              String?
+  password_hash     String
+  role              UserRole       @default(no_data)
+  company_id        Int            @default(0)
+  customer_id       String?        @unique
+  attemptpass_count Int?           @default(0)
+  reset_code        String         @default("")
+  is_emailverified  Boolean        @default(false)
+  is_mobileverified Boolean        @default(false)
+  user_status       UserStatus     @default(inactive_waitverify)
+  created_at        DateTime       @default(now())
+  updated_at        DateTime       @default(now())
+  deleted_at        DateTime?
+  favs              Json
+  Customer          Customer?      @relation(fields: [customer_id], references: [customer_id])
+  loggers           Logger[]
+  from_inquiries    Inquiry[]      @relation("FromUser")
+  assign_inquiries  Inquiry[]      @relation("AssignUser")
+  notifications     Notification[]
+  ScoutFav          ScoutFav[]
+
+  @@unique([email, mobile])
+  @@map("user")
+}

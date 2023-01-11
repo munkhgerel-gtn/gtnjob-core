@@ -1,0 +1,12 @@
+model CustomerQualification {
+    qualification_id         String @default(uuid()) @id
+    customer_id              String
+    customers                Customer @relation(fields: [customer_id], references: [customer_id])
+    qualification            Json?
+    created_at               DateTime @default(now())
+    updated_at               DateTime @default(now())
+    created_by               String?
+    updated_by               String?
+
+    @@map("customer_qualification")
+}

@@ -1,0 +1,13 @@
+model JobRequirement {
+    job_require_id String   @id @default(uuid())
+    job_id         String
+    jobs           Job      @relation(fields: [job_id], references: [job_id])
+    require_id     Int
+    require_detial Json?
+    created_at     DateTime @default(now())
+    updated_at     DateTime @default(now())
+    created_by     String?
+    updated_by     String?
+
+    @@map("job_requirement")
+}

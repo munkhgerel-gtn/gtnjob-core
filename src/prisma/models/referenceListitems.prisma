@@ -1,0 +1,15 @@
+model ReferenceListItems {
+    listitem_id          Int                  @id @default(autoincrement())
+    list_id              Int
+    list                 ReferenceList        @relation(fields: [list_id], references: [list_id])
+    dictionary_id        Int
+    code                 String?
+    listitem_value       String?
+    parent_id            Int?
+    value                String?
+    created_at           DateTime             @default(now())
+    updated_at           DateTime             @default(now())
+    customer_experiences CustomerExperience[]
+
+    @@map("reference_listitem")
+}

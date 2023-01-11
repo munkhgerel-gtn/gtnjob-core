@@ -1,0 +1,15 @@
+model EntityAccountInfo {
+    entity_accountinfo_id         String @id @default(uuid())
+    entity_id                    Int?
+    entity                       Entity? @relation(fields: [entity_id], references: [entity_id])
+    bank_code                    String?
+    branch_code                  String?
+    account_id                   String?
+    is_default                   Boolean?
+    created_at                   DateTime @default(now())
+    updated_at                   DateTime @default(now())
+    updated_by                   String?
+    created_by                   String?
+
+    @@map("entity_accountinfo")
+}

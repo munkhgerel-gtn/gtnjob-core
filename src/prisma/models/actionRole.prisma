@@ -1,0 +1,15 @@
+model ActionRole {
+    action_role_id               String @id @default(uuid())
+    controller_path              String?
+    action_user                  UserAction @default(no_data)
+    role                         UserRole @default(no_data)
+    is_can                       Boolean
+    is_company                   Boolean
+    parent_id                    String?
+    created_at                   DateTime @default(now())
+    updated_at                   DateTime @default(now())
+    created_by                   String?
+    updated_by                   String?
+    
+    @@map("action_role")
+}

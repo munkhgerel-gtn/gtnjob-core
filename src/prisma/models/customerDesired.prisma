@@ -1,0 +1,19 @@
+model CustomerDesired {
+    desired_id              String @default(uuid()) @id
+    customer                Customer? @relation(fields: [customer_id],references: [customer_id])
+    customer_id             String?
+    occupation              Json[]
+    industry                Json[]
+    location                Json[]
+    career_level            Json[]
+    contract_type           Json[]
+    desired_company         Json[]
+    time_to                 String
+    annual_income           Int
+    created_at              DateTime @default(now())
+    updated_at              DateTime @default(now())
+    created_by              String?
+    updated_by              String?
+
+    @@map("customer_desired")
+}

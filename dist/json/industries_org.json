@@ -1,0 +1,241 @@
+[
+    {
+        "category": "trading company",
+        "subcategory": [
+            {
+                "subvalue": "general trading company"
+            },
+            {
+                "subvalue": "Specialized Trading Company/Other Trading Company"
+            }
+        ]
+    },
+    {
+        "category": "Manufacturer",
+        "subcategory": [
+            {
+                "subvalue": "Home appliances/AV equipment"
+            },
+            {
+                "subvalue": "Games/Toys/Entertainment Products"
+            },
+            {
+                "subvalue": "Computer/Communication"
+            },
+            {
+                "subvalue": "Semiconductors/commercial electrical and electronic equipment"
+            },
+            {
+                "subvalue": "Auto/Airplane/Transportation"
+            },
+            {
+                "subvalue": "Machinery, precision equipment, facility-related equipment"
+            },
+            {
+                "subvalue": "medical equipment"
+            },
+            {
+                "subvalue": "Metals/Chemicals/Building Materials/Materials"
+            },
+            {
+                "subvalue": "food"
+            },
+            {
+                "subvalue": "Medicines, supplements, cosmetics"
+            },
+            {
+                "subvalue": "Daily necessities, miscellaneous goods, stationery, precious metals"
+            },
+            {
+                "subvalue": "Fashion/Apparel/Sports/Others"
+            }
+        ]
+    },
+    {
+        "category": "IT/Communication/Internet",
+        "subcategory": [
+            {
+                "subvalue": "Software, web, application production, commissioned development"
+            },
+            {
+                "subvalue": "Web service, media, promotion"
+            },
+            {
+                "subvalue": "game related"
+            },
+            {
+                "subvalue": "Telecommunications carrier, telecommunications related, others"
+            }
+        ]
+    },
+    {
+        "category": "Advertising, mass media, design",
+        "subcategory": [
+            {
+                "subvalue": "Broadcast/Video/Sound"
+            },
+            {
+                "subvalue": "Newspaper/advertising/publishing/printing"
+            },
+            {
+                "subvalue": "Design/Art/Event/Other"
+            }
+        ]
+    },
+    {
+        "category": "service",
+        "subcategory": [
+            {
+                "subvalue": "Food and drink, others"
+            },
+            {
+                "subvalue": "Hotels, inns, ceremonial occasions"
+            },
+            {
+                "subvalue": "Travel/Leisure/Amusement"
+            },
+            {
+                "subvalue": "Beauty/Barber/Esthetic/Health/Fitness"
+            },
+            {
+                "subvalue": "Education/childcare"
+            },
+            {
+                "subvalue": "Building management/maintenance/security"
+            },
+            {
+                "subvalue": "Outsourcing call center"
+            },
+            {
+                "subvalue": "Temporary staffing/Recruitment/Others"
+            }
+        ]
+    },
+    {
+        "category": "Retail/Distribution",
+        "subcategory": [
+            {
+                "subvalue": "Mail order"
+            },
+            {
+                "subvalue": "Department stores/GMS"
+            },
+            {
+                "subvalue": "Supermarkets, convenience stores, groceries"
+            },
+            {
+                "subvalue": "Drugstores/dispensing pharmacies"
+            },
+            {
+                "subvalue": "Home center"
+            },
+            {
+                "subvalue": "Electronics/mass retailers"
+            },
+            {
+                "subvalue": "Automobile dealer"
+            },
+            {
+                "subvalue": "Fashion/Apparel/Sports"
+            },
+            {
+                "subvalue": "Specialty stores/others"
+            }
+        ]
+    },
+    {
+        "category": "Medical care and welfare",
+        "subcategory": [
+            {
+                "subvalue": "medical care"
+            },
+            {
+                "subvalue": "Nursing care, welfare, others"
+            }
+        ]
+    },
+    {
+        "category": "consulting",
+        "subcategory": [
+            {
+                "subvalue": "Think tank, marketing, research"
+            },
+            {
+                "subvalue": "Professional consultant"
+            },
+            {
+                "subvalue": "Professional/Private Office/Others"
+            }
+        ]
+    },
+    {
+        "category": "Finance/Insurance",
+        "subcategory": [
+            {
+                "subvalue": "Banks/governmental financial institutions"
+            },
+            {
+                "subvalue": "Consumer credit, credit, consumer finance"
+            },
+            {
+                "subvalue": "Securities, Futures, Venture Capital, Other Investments"
+            },
+            {
+                "subvalue": "Life/non-life insurance"
+            },
+            {
+                "subvalue": "Lease/Rental"
+            },
+            {
+                "subvalue": "Mutual Aid/Others"
+            }
+        ]
+    },
+    {
+        "category": "Real Estate/Construction/Equipment",
+        "subcategory": [
+            {
+                "subvalue": "Construction/Civil Engineering/Plant"
+            },
+            {
+                "subvalue": "real estate"
+            }
+        ]
+    },
+    {
+        "category": "Transportation/Logistics",
+        "subcategory": [
+            {
+                "subvalue": "Marine/Railway/Air/Land Transport"
+            },
+            {
+                "subvalue": "Logistics/Warehouse"
+            }
+        ]
+    },
+    {
+        "category": "Environment/Energy",
+        "subcategory": [
+            {
+                "subvalue": "Environment/recycling"
+            },
+            {
+                "subvalue": "Electricity/Gas/Energy/Others"
+            }
+        ]
+    },
+    {
+        "category": "others",
+        "subcategory": [
+            {
+                "subvalue": "Government/public interest/special/independent administrative agency"
+            },
+            {
+                "subvalue": "Cooperative associations such as living and agriculture"
+            },
+            {
+                "subvalue": "Agriculture/Forestry/Fisheries/Others"
+            }
+        ]
+    }
+]

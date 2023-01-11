@@ -1,0 +1,14 @@
+model JobCandidate {
+    job_candidate_id            String @id @default(uuid())
+    job_id                   String
+    job                     Job @relation(fields: [job_id], references: [job_id])
+    customer_id              String
+    customer                 Customer @relation(fields: [customer_id], references: [customer_id])
+    candidate_status         Int
+    created_at               DateTime @default(now())
+    updated_at               DateTime @default(now()) @updatedAt
+    created_by               String?
+    updated_by               String?
+
+    @@map("job_candidate")
+}

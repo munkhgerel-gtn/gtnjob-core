@@ -1,0 +1,16 @@
+/// Cutomer's one to one
+model CustomerJobDetail {
+    jobdetail_id                 String @id @default(uuid())
+    customer_id                  String?
+    customer                     Customer? @relation(fields: [customer_id], references: [customer_id]) 
+    customer_experiences         CustomerExperience[]
+    experienced_company          Int @default(0)
+    annual_income                Int?
+    has_management_exp           Boolean @default(false)
+    created_at                   DateTime @default(now())
+    updated_at                   DateTime @default(now())
+    created_by                   String?
+    updated_by                   String?
+
+    @@map("customer_jobdetail")
+}

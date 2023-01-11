@@ -1,0 +1,27 @@
+model EntityBranch {
+    branch_id       Int      @id @default(autoincrement())
+    branch_name     String?
+    kana            String?
+    is_jeadquarter  Boolean  @default(false)
+    image           String?
+    prefecture      Json?
+    post_code       String?
+    city            String?
+    district        String?
+    address         String?
+    address1        String?
+    nearest_station String?
+    socials         Json?
+    gps             Json?
+    contact_person  Json?
+    contact_details Json?
+    created_at      DateTime @default(now())
+    updated_at      DateTime @default(now())
+    created_by      String?
+    updated_by      String?
+    entity          Entity  @relation(fields: [entity_id], references: [entity_id])
+    entity_id       Int
+    jobs            Job[]
+
+    @@map("entity_branch")
+}

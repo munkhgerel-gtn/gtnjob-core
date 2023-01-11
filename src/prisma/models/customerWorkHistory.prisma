@@ -1,0 +1,21 @@
+model CustomerWorkHistory {
+    workhistory_id       String @default(uuid()) @id
+    customer_id          String
+    customer             Customer @relation(fields: [customer_id], references: [customer_id])
+    company_id           String?
+    company_info         Json?
+    occupation           Json?
+    industry             Json?
+    position             JobPosition? @default(no_data)
+    enter_date           DateTime?
+    leave_date          DateTime?
+    working_month        Int?
+    is_current           Boolean?
+    duties               String?
+    created_at           DateTime @default(now())
+    updated_at           DateTime @default(now())
+    created_by           String?
+    updated_by           String?
+
+    @@map("customer_workhistory")
+}

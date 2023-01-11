@@ -1,0 +1,8 @@
+model ReferenceList {
+    list_id          Int @default(autoincrement()) @id
+    list_name        String
+    created_at       DateTime @default(now())
+    listitems        ReferenceListItems[]
+
+    @@map("reference_list")
+}

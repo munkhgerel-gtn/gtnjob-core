@@ -1,0 +1,11 @@
+model Dictionary {
+  dictionaries_id     String               @id @default(uuid()) 
+  dictionary_id       Int                  
+  language_code       String               
+  dic_value           String
+  created_at          DateTime             @default(now())
+  reference_listitems ReferenceListItems[]
+
+  @@unique([dictionary_id, language_code], map: "Dictionary_dic_language_unique")
+  @@map("dictionary")
+}

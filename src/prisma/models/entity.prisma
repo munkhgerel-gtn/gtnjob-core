@@ -1,0 +1,28 @@
+model Entity {
+    entity_id           Int                 @id @default(autoincrement())
+    name                String
+    kana                String?
+    logo                String?
+    // prefecture          Json?
+    // post_code           String?
+    // city                String?
+    // district            String?
+    // address             String?
+    // address1            String?
+    // nearest_station     String?
+    socials             Json?
+    gps                 Json?
+    contact_person      Json?
+    contact_details     Json?
+    is_system           Boolean             @default(false)
+    created_at          DateTime            @default(now())
+    updated_at          DateTime            @default(now())
+    created_by          String?
+    updated_by          String?
+    entity_details      EntityDetail[]
+    entity_branches     EntityBranch[]
+    entity_accountinfos EntityAccountInfo[]
+    inquiries           Inquiry[]           @relation("ToEntity")
+
+    @@map("entity")
+}

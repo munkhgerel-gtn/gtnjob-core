@@ -1,0 +1,18 @@
+model CustomerVisa {
+    visa_id              String @id @default(uuid())
+    customer_id          String
+    customer             Customer @relation(fields: [customer_id], references: [customer_id])
+    status_visa          StatusVisa? @default(no_data)
+    date_expire          DateTime?
+    country_citizenship  String?
+    back_visafile        String?
+    front_visafile       String?
+    created_at           DateTime @default(now())
+    updated_at           DateTime @default(now())
+    created_by           String?
+    updated_by           String?
+
+    @@map("customer_visa")
+}
+
+

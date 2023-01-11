@@ -1,0 +1,44 @@
+model Customer {
+    customer_id             String                  @id @default(uuid())
+    first_name              String
+    last_name               String
+    first_name_kana         String
+    last_name_kana          String
+    gender                  Gender?                 @default(no_data)
+    birth_date              DateTime?
+    spouse                  Json?
+    family_size             Int?
+    email                   String?
+    mobile                  String?
+    phone                   String?
+    profile_image           String?
+    cv_file                 String?
+    resume_file             String?
+    prefecture              Json?
+    post_code               String?
+    city                    String?
+    district                String?
+    address                 String?
+    address1                String?
+    nearest_station         String?
+    socials                 Json?
+    country                 String?
+    experienced_year        Int?
+    from_data               Int?
+    status_customer         CustomerStatus?         @default(no_data)
+    created_at              DateTime                @default(now())
+    updated_at              DateTime                @default(now())
+    created_by              String?
+    updated_by              String?
+    user                    User?
+    customer_visas          CustomerVisa[]
+    customer_jobdetails     CustomerJobDetail[]
+    customer_educations     CustomerEducation[]
+    customer_languages      CustomerLanguage[]
+    customer_qualifications CustomerQualification[]
+    customer_workhistories  CustomerWorkHistory[]
+    job_candidates          JobCandidate[]
+    customer_desired        CustomerDesired[]
+
+    @@map("customer")
+}

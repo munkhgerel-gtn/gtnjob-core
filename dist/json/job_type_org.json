@@ -1,0 +1,630 @@
+[
+    {
+        "category": "career track",
+        "subcategory": [
+            {
+                "subvalue": "Comprehensive work"
+            }
+        ]
+    },
+    {
+        "category": "Management Strategy/Business Strategy",
+        "subcategory": [
+            {
+                "subvalue": "Manager/Executive/Country Head"
+            },
+            {
+                "subvalue": "Management planning, business planning, business management"
+            },
+            {
+                "subvalue": "New business development, business production"
+            },
+            {
+                "subvalue": "M&amp;A strategy"
+            },
+            {
+                "subvalue": "Others, management strategy, business strategy"
+            }
+        ]
+    },
+    {
+        "category": "Consultant/Specialist",
+        "subcategory": [
+            {
+                "subvalue": "Management/strategy consultant"
+            },
+            {
+                "subvalue": "Finance and Accounting Consultant"
+            },
+            {
+                "subvalue": "HR/Organization Consultant"
+            },
+            {
+                "subvalue": "Technical/specialized area consultant"
+            },
+            {
+                "subvalue": "researcher, researcher"
+            },
+            {
+                "subvalue": "Environmental research, environmental analysis"
+            },
+            {
+                "subvalue": "Other consultants"
+            },
+            {
+                "subvalue": "Certified public accountant, tax accountant"
+            },
+            {
+                "subvalue": "Lawyer, Patent Attorney"
+            },
+            {
+                "subvalue": "judicial scrivener, administrative scrivener"
+            },
+            {
+                "subvalue": "Other nationally qualified and advanced qualified professionals"
+            }
+        ]
+    },
+    {
+        "category": "Finance/Securities/Insurance",
+        "subcategory": [
+            {
+                "subvalue": "Dealers, Traders, Fund Managers"
+            },
+            {
+                "subvalue": "Financial product development, quants, actuaries"
+            },
+            {
+                "subvalue": "Investment banking business, M&amp;A business"
+            },
+            {
+                "subvalue": "analyst, research"
+            },
+            {
+                "subvalue": "Other financial planning, office work, management"
+            },
+            {
+                "subvalue": "Financial institution sales"
+            },
+            {
+                "subvalue": "Private sales, financial planner"
+            },
+            {
+                "subvalue": "Other, financial professionals"
+            }
+        ]
+    },
+    {
+        "category": "marketing",
+        "subcategory": [
+            {
+                "subvalue": "market research, market analysis, market research"
+            },
+            {
+                "subvalue": "Product planning and service development"
+            },
+            {
+                "subvalue": "ADVERTISING, PROMOTION, BRANDING"
+            },
+            {
+                "subvalue": "Other marketing"
+            }
+        ]
+    },
+    {
+        "category": "administrative clerical work",
+        "subcategory": [
+            {
+                "subvalue": "general affairs"
+            },
+            {
+                "subvalue": "personnel, labor"
+            },
+            {
+                "subvalue": "Financial accounting"
+            },
+            {
+                "subvalue": "accounting"
+            },
+            {
+                "subvalue": "Internal control/audit/examination"
+            },
+            {
+                "subvalue": "Legal/Compliance"
+            },
+            {
+                "subvalue": "Intellectual property, patent"
+            },
+            {
+                "subvalue": "PR, IR"
+            },
+            {
+                "subvalue": "General Secretary"
+            },
+            {
+                "subvalue": "reception"
+            },
+            {
+                "subvalue": "secretary"
+            },
+            {
+                "subvalue": "Other administrative clerical work"
+            }
+        ]
+    },
+    {
+        "category": "business staff",
+        "subcategory": [
+            {
+                "subvalue": "Interpretation and translation"
+            },
+            {
+                "subvalue": "Telemarketing, customer support"
+            },
+            {
+                "subvalue": "Call center operation and management"
+            },
+            {
+                "subvalue": "telephone operator, telephone appointment"
+            },
+            {
+                "subvalue": "Recruitment, temporary staffing coordinator"
+            },
+            {
+                "subvalue": "Merchandiser, Buyer, Purchase Appraisal"
+            },
+            {
+                "subvalue": "Logistics planning, logistics management, inventory management"
+            },
+            {
+                "subvalue": "materials, purchasing"
+            },
+            {
+                "subvalue": "trade, international business"
+            },
+            {
+                "subvalue": "Store development, FC development"
+            },
+            {
+                "subvalue": "Other business staff"
+            }
+        ]
+    },
+    {
+        "category": "Sales system",
+        "subcategory": [
+            {
+                "subvalue": "Corporate sales"
+            },
+            {
+                "subvalue": "Personal sales"
+            },
+            {
+                "subvalue": "Overseas sales"
+            },
+            {
+                "subvalue": "Sales promotion planning, sales planning"
+            },
+            {
+                "subvalue": "Sales office, sales assistant"
+            },
+            {
+                "subvalue": "Other sales-related jobs"
+            }
+        ]
+    },
+    {
+        "category": "Store/Sales/Service",
+        "subcategory": [
+            {
+                "subvalue": "Supervisor, store guidance"
+            },
+            {
+                "subvalue": "store manager"
+            },
+            {
+                "subvalue": "Sales, Interpretation Sales, Sales Floor Manager, Beauty Advisor"
+            },
+            {
+                "subvalue": "hall staff, floor staff"
+            },
+            {
+                "subvalue": "cook, chef, pastry chef"
+            },
+            {
+                "subvalue": "Others, retail, restaurant, amusement related jobs"
+            },
+            {
+                "subvalue": "barber, hairdresser"
+            },
+            {
+                "subvalue": "esthetician"
+            },
+            {
+                "subvalue": "Other, hairdressing and esthetic related jobs"
+            },
+            {
+                "subvalue": "Travel arrangements, tour conductors, tour conductors"
+            },
+            {
+                "subvalue": "Hotel, accommodation service"
+            },
+            {
+                "subvalue": "Wedding Planner/Bridal Coordinator"
+            },
+            {
+                "subvalue": "Other travel, hotel, and bridal jobs"
+            }
+        ]
+    },
+    {
+        "category": "Education/Sports/Civil Service",
+        "subcategory": [
+            {
+                "subvalue": "language teacher, teacher, lecturer, instructor"
+            },
+            {
+                "subvalue": "Education manager"
+            },
+            {
+                "subvalue": "Education-related affairs"
+            },
+            {
+                "subvalue": "Nursery teacher, kindergarten teacher"
+            },
+            {
+                "subvalue": "curator, librarian"
+            },
+            {
+                "subvalue": "sports instructor, athlete"
+            },
+            {
+                "subvalue": "Corporate training, coaching trainer"
+            },
+            {
+                "subvalue": "civil servants, organization employees"
+            },
+            {
+                "subvalue": "Others, education, civil servants, sports"
+            }
+        ]
+    },
+    {
+        "category": "IT, web services, games",
+        "subcategory": [
+            {
+                "subvalue": "IT consultant"
+            },
+            {
+                "subvalue": "Architect, Analyst, Product Manager"
+            },
+            {
+                "subvalue": "Research/Patent Engineer"
+            },
+            {
+                "subvalue": "Web Producer, Web Director, UI/UX Design"
+            },
+            {
+                "subvalue": "Digital Marketing, Web Advertising, SEO, SNS"
+            },
+            {
+                "subvalue": "PM (web, mobile, app)"
+            },
+            {
+                "subvalue": "PM (general purpose)"
+            },
+            {
+                "subvalue": "PM (package, middleware)"
+            },
+            {
+                "subvalue": "PM (embedded, control)"
+            },
+            {
+                "subvalue": "SE, PG (web, mobile, app)"
+            },
+            {
+                "subvalue": "SE, PG (general purpose)"
+            },
+            {
+                "subvalue": "SE, PG (package, middleware)"
+            },
+            {
+                "subvalue": "SE, PG (embedded, control)"
+            },
+            {
+                "subvalue": "Game creator (design, programming, etc.)"
+            },
+            {
+                "subvalue": "AR/VR development"
+            },
+            {
+                "subvalue": "web designer"
+            },
+            {
+                "subvalue": "Web editing, content planning"
+            },
+            {
+                "subvalue": "server engineer"
+            },
+            {
+                "subvalue": "network engineer"
+            },
+            {
+                "subvalue": "Database Engineer, Data Scientist, AI/Machine Learning"
+            },
+            {
+                "subvalue": "security engineer"
+            },
+            {
+                "subvalue": "In-house SE"
+            },
+            {
+                "subvalue": "QA Engineer, Test Engineer"
+            },
+            {
+                "subvalue": "SRE engineer, development environment maintenance, development environment automation"
+            },
+            {
+                "subvalue": "localization"
+            },
+            {
+                "subvalue": "Bridge SE"
+            },
+            {
+                "subvalue": "Pre-Sales, Sales Engineer"
+            },
+            {
+                "subvalue": "IT Help Desk, Technical Support"
+            },
+            {
+                "subvalue": "System introduction, training"
+            },
+            {
+                "subvalue": "Others related to IT/Web services"
+            }
+        ]
+    },
+    {
+        "category": "Film/Animation/Publishing/Creative",
+        "subcategory": [
+            {
+                "subvalue": "Creative Director/Art Director"
+            },
+            {
+                "subvalue": "graphic designer"
+            },
+            {
+                "subvalue": "illustrator, cartoonist"
+            },
+            {
+                "subvalue": "photographer"
+            },
+            {
+                "subvalue": "DTP operator"
+            },
+            {
+                "subvalue": "edit, editor, desk"
+            },
+            {
+                "subvalue": "reporter, writer, copywriter"
+            },
+            {
+                "subvalue": "Production progress management"
+            },
+            {
+                "subvalue": "Others, fashion, miscellaneous goods, design related"
+            },
+            {
+                "subvalue": "Other publishing/printing jobs"
+            },
+            {
+                "subvalue": "Producer, Director, AP, AD, Director, Director, Moderator"
+            },
+            {
+                "subvalue": "Screenwriter, Broadcaster, Screenwriter"
+            },
+            {
+                "subvalue": "Video production, editing, technology, sound, lighting"
+            },
+            {
+                "subvalue": "animator"
+            },
+            {
+                "subvalue": "announcer, actor, model, companion"
+            },
+            {
+                "subvalue": "voice actor, narrator"
+            },
+            {
+                "subvalue": "singer, performer, singer-songwriter, lyricist, composer"
+            },
+            {
+                "subvalue": "Other video/event/entertainment-related jobs"
+            }
+        ]
+    },
+    {
+        "category": "Mechanical/Electric/Electronics",
+        "subcategory": [
+            {
+                "subvalue": "Machine, automobile, airplane, robot design"
+            },
+            {
+                "subvalue": "mold design"
+            },
+            {
+                "subvalue": "CAE analysis"
+            },
+            {
+                "subvalue": "Home appliances, electrical products, equipment, device design"
+            },
+            {
+                "subvalue": "Control, IOT design"
+            },
+            {
+                "subvalue": "semiconductor design"
+            },
+            {
+                "subvalue": "electronic circuit design"
+            },
+            {
+                "subvalue": "CAD operator (electrical/electronic/mechanical)"
+            },
+            {
+                "subvalue": "Production technology, process development"
+            },
+            {
+                "subvalue": "Quality control, product evaluation, quality assurance, production control (electrical/electronic/mechanical)"
+            },
+            {
+                "subvalue": "Sales Engineer, Field Application Engineer (FAE)"
+            },
+            {
+                "subvalue": "service engineer"
+            },
+            {
+                "subvalue": "Research, Patents, Technical Marketing"
+            },
+            {
+                "subvalue": "Other electrical and electronic mechanical engineers"
+            }
+        ]
+    },
+    {
+        "category": "Medical/Pharmaceutical/Welfare",
+        "subcategory": [
+            {
+                "subvalue": "doctors, dentists, nurses"
+            },
+            {
+                "subvalue": "Physical therapist, occupational therapist, chiropractor, judo therapist, masseuse"
+            },
+            {
+                "subvalue": "counselor, clinical psychologist"
+            },
+            {
+                "subvalue": "medical affairs"
+            },
+            {
+                "subvalue": "Pharmacist, management pharmacist"
+            },
+            {
+                "subvalue": "MR (in charge of medical information), MS (in charge of drug wholesale sales), DMR (in charge of clinical test drug information)"
+            },
+            {
+                "subvalue": "Clinical trials, clinical trials, regulatory applications, drug monitoring (CRA, CRC, preclinical, clinical development, PMS))"
+            },
+            {
+                "subvalue": "Academic and technical support"
+            },
+            {
+                "subvalue": "Other medical engineers"
+            },
+            {
+                "subvalue": "caregiver, care manager, social worker"
+            },
+            {
+                "subvalue": "Other medical and welfare-related jobs"
+            }
+        ]
+    },
+    {
+        "category": "Food/Bio/Materials/Research",
+        "subcategory": [
+            {
+                "subvalue": "biotechnology, life sciences"
+            },
+            {
+                "subvalue": "Product development (materials, foods, pharmaceuticals)"
+            },
+            {
+                "subvalue": "Production technology/production management (materials, food, pharmaceuticals)"
+            },
+            {
+                "subvalue": "Quality control and assurance (materials, food, pharmaceuticals)"
+            },
+            {
+                "subvalue": "Sales and support engineers (materials, food, pharmaceuticals)"
+            },
+            {
+                "subvalue": "Application/Patent/Search/Others"
+            },
+            {
+                "subvalue": "Agriculture, forestry and fisheries jobs"
+            },
+            {
+                "subvalue": "Others, food, biotechnology, material, research"
+            }
+        ]
+    },
+    {
+        "category": "Real Estate/Construction/Civil Engineering/Plant",
+        "subcategory": [
+            {
+                "subvalue": "Construction Consultant/Business Planning"
+            },
+            {
+                "subvalue": "Design/estimate"
+            },
+            {
+                "subvalue": "Drafting, CAD operator, tracer, interior"
+            },
+            {
+                "subvalue": "Surveying, Structural Analysis (Architecture/Civil Engineering/Plant/Equipment)"
+            },
+            {
+                "subvalue": "Construction management"
+            },
+            {
+                "subvalue": "Technology development (construction, civil engineering, plant, equipment)"
+            },
+            {
+                "subvalue": "Patent, research, others (construction, civil engineering, plant, equipment)"
+            },
+            {
+                "subvalue": "Land purchase, real estate purchase, real estate appraisal"
+            },
+            {
+                "subvalue": "Real estate/condominium management, operation, utilization"
+            },
+            {
+                "subvalue": "Other Real Estate Professionals"
+            }
+        ]
+    },
+    {
+        "category": "Logistics/logistics/security/facility management",
+        "subcategory": [
+            {
+                "subvalue": "SCM"
+            },
+            {
+                "subvalue": "Warehouse management, on-site warehouse work"
+            },
+            {
+                "subvalue": "driver, delivery staff"
+            },
+            {
+                "subvalue": "Pilots, cabin attendants, ground staff, air traffic controllers"
+            },
+            {
+                "subvalue": "Train driver, conductor, engineer, navigator"
+            },
+            {
+                "subvalue": "Other jobs related to transportation, delivery, and warehousing"
+            },
+            {
+                "subvalue": "guard, guard"
+            },
+            {
+                "subvalue": "cleaning staff"
+            },
+            {
+                "subvalue": "Building facility management, boiler engineer"
+            },
+            {
+                "subvalue": "Others related to security, cleaning, and facility management"
+            }
+        ]
+    }
+]

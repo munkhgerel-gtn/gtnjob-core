@@ -1,0 +1,16 @@
+/// Customer experience, 
+
+model CustomerExperience {
+    experience_id String             @id @default(uuid())
+    jobdetail_id  String
+    jobdetails    CustomerJobDetail  @relation(fields: [jobdetail_id], references: [jobdetail_id])
+    skill_id      Int
+    listitems     ReferenceListItems @relation(fields: [skill_id], references: [listitem_id])
+    over_year     Int?
+    created_at    DateTime           @default(now())
+    updated_at    DateTime?          @default(now())
+    created_by    String?
+    updated_by    String?
+
+    @@map("customer_experience")
+}

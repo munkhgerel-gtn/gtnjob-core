@@ -1,0 +1,7 @@
+model SystemLangauge {
+  language_id   Int     @id @default(autoincrement())
+  language_code String  @unique
+  is_default    Boolean @default(false)
+
+  @@map("system_language")
+}

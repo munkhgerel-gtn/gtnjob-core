@@ -1,0 +1,673 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table action_role {
+  action_role_id String [pk]
+  controller_path String
+  action_user UserAction [not null, default: 'no_data']
+  role UserRole [not null, default: 'no_data']
+  is_can Boolean [not null]
+  is_company Boolean [not null]
+  parent_id String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table customer {
+  customer_id String [pk]
+  first_name String [not null]
+  last_name String [not null]
+  first_name_kana String [not null]
+  last_name_kana String [not null]
+  gender Gender [default: 'no_data']
+  birth_date DateTime
+  spouse Json
+  family_size Int
+  email String
+  mobile String
+  phone String
+  profile_image String
+  cv_file String
+  resume_file String
+  prefecture Json
+  post_code String
+  city String
+  district String
+  address String
+  address1 String
+  nearest_station String
+  socials Json
+  country String
+  experienced_year Int
+  from_data Int
+  status_customer CustomerStatus [default: 'no_data']
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+  user user
+  customer_visas customer_visa [not null]
+  customer_jobdetails customer_jobdetail [not null]
+  customer_educations customer_education [not null]
+  customer_languages customer_language [not null]
+  customer_qualifications customer_qualification [not null]
+  customer_workhistories customer_workhistory [not null]
+  job_candidates job_candidate [not null]
+}
+
+Table customer_education {
+  education_id String [pk]
+  customer customer
+  customer_id String
+  country String
+  degree Json
+  entrollment_date DateTime
+  graduate_date DateTime
+  is_current Boolean
+  school_id Int
+  school Json
+  faculty String
+  department String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table customer_experience {
+  experience_id String [pk]
+  jobdetail_id String [not null]
+  jobdetails customer_jobdetail [not null]
+  skill_id Int [not null]
+  listitems reference_listitem [not null]
+  over_year Int
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`]
+  created_by String
+  updated_by String
+}
+
+Table customer_jobdetail {
+  jobdetail_id String [pk]
+  customer_id String
+  customer customer
+  customer_experiences customer_experience [not null]
+  experienced_company Int [not null, default: 0]
+  annual_income Int
+  has_management_exp Boolean [not null, default: false]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+
+  Note: 'Cutomer\'s one to one'
+}
+
+Table customer_language {
+  language_id String [pk]
+  customer_id String [not null]
+  customer customer [not null]
+  level LanguageLevel [default: 'no_data']
+  language Int
+  is_motherlanguage Boolean [not null, default: false]
+  certificate Json
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`]
+  created_by String
+  updated_b String
+}
+
+Table customer_qualification {
+  qualification_id String [pk]
+  customer_id String [not null]
+  customers customer [not null]
+  qualification Json
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table customer_visa {
+  visa_id String [pk]
+  customer_id String [not null]
+  customer customer [not null]
+  status_visa StatusVisa [default: 'no_data']
+  date_expire DateTime
+  country_citizenship String
+  back_visafile String
+  front_visafile String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table customer_workhistory {
+  workhistory_id String [pk]
+  customer_id String [not null]
+  customer customer [not null]
+  company_id String
+  company_info Json
+  occupation Json
+  industry Json
+  position JobPosition [default: 'no_data']
+  enter_date DateTime
+  leave_date DateTime
+  working_month Int
+  is_current Boolean
+  duties String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table dictionary {
+  dictionaries_id String [pk]
+  dictionary_id Int [not null]
+  language_code String [not null]
+  dic_value String [not null]
+  created_at DateTime [default: `now()`, not null]
+  reference_listitems reference_listitem [not null]
+
+  indexes {
+    (dictionary_id, language_code) [unique]
+  }
+}
+
+Table entity {
+  entity_id Int [pk, increment]
+  name String [not null]
+  kana String
+  prefecture Json
+  logo String
+  address String
+  street String
+  post_code String
+  gps Json
+  contact_person Json
+  contact_details Json
+  is_system Boolean [not null, default: false]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+  entity_details entity_detail [not null]
+  entity_branches entity_branch [not null]
+  entity_accountinfos entity_accountinfo [not null]
+  inquiries inquiry [not null]
+}
+
+Table entity_accountinfo {
+  entity_accountinfo_id String [pk]
+  entity_id Int
+  entity entity
+  bank_code String
+  branch_code String
+  account_id String
+  is_default Boolean
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  updated_by String
+  created_by String
+}
+
+Table entity_branch {
+  branch_id Int [pk, increment]
+  branch_name String [not null]
+  is_jeadquarter Boolean [not null, default: false]
+  prefecture Json
+  address String
+  street String
+  post_code String
+  gps Json
+  contact_person Json
+  contact_details Json
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+  entity entity
+  entity_id Int [not null]
+  jobs job [not null]
+}
+
+Table entity_detail {
+  entity_detail_id String [pk]
+  entity_id Int
+  entity entity
+  establishment DateTime
+  capital Int
+  numberof_employees Int
+  business_performance Json
+  representative_telephone String
+  representative String
+  average_age Int
+  foreign_capitalratio Int
+  homepage String
+  business_summary String
+  organizational_structure String
+  company_sales String
+  workplace_environment String
+  shareholder Json
+  related_company Int
+  recruitment_personname String
+  memo String
+  business_status String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table file_uploads {
+  file_id String [pk]
+  file_name String [not null]
+  target_id String [not null]
+  file_type FileType [not null]
+  fiel_source FileSource [not null]
+  created_at DateTime [default: `now()`, not null]
+  created_by String [not null]
+}
+
+Table inquiry {
+  inquire_id String [pk]
+  parent_id String
+  fromuser_id String
+  fromuser user
+  entity_id Int
+  entity entity
+  assigned_user_id String
+  assignUser user
+  subject String [not null]
+  body String [not null]
+  inquiry_status InquiryStatus
+  is_read Boolean [not null, default: false]
+  is_answer Boolean [not null, default: false]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+}
+
+Table job {
+  job_id String [pk]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String [not null]
+  updated_by String
+  job_publish JobPublish [not null]
+  job_references job_reference [not null]
+  location_details String
+  career_level JobPosition[] [not null]
+  benefit_other String
+  smoke Smoke[] [not null]
+  employment_status EmploymentStatus [not null]
+  japanese_level LanguageLevel [not null]
+  english_level LanguageLevel [not null]
+  job_other_languages job_other_language [not null]
+  experienced_count Int [not null]
+  age_min Int
+  age_max Int
+  set_age_reason String
+  job_title String [not null]
+  job_description String [not null]
+  japanese_percentage Int
+  must_condition String [not null]
+  want_condition String
+  position_name String
+  working_hour String [not null]
+  salary_type SalaryType [not null]
+  salary_min Int
+  salary_max Int
+  salary_detail String [not null]
+  day_off String
+  progress_detail String [not null]
+  entity_branch_id Int [not null]
+  expire_date DateTime
+  entity_branch entity_branch
+  job_candidates job_candidate [not null]
+  JobRequirement job_requirement [not null]
+}
+
+Table job_other_language {
+  job_other_language_id String [pk]
+  language_id Int [not null]
+  language_level LanguageLevel [not null]
+  job_id String [not null]
+  job job [not null]
+}
+
+Table job_reference {
+  job_reference_id String [pk]
+  job_id String [not null]
+  reference_list_id Int [not null]
+  reference_list_item_id Int [not null]
+  job job [not null]
+  reference_list reference_list [not null]
+  reference_list_item reference_listitem [not null]
+}
+
+Table job_candidate {
+  job_candidate_id String [pk]
+  job_id String [not null]
+  job job [not null]
+  customer_id String [not null]
+  customer customer [not null]
+  candidate_status Int [not null]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table job_requirement {
+  job_require_id String [pk]
+  job_id String [not null]
+  jobs job [not null]
+  require_id Int [not null]
+  require_detial Json
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table system_language {
+  language_id Int [pk, increment]
+  language_code String [unique, not null]
+  is_default Boolean [not null, default: false]
+}
+
+Table logger {
+  log_id String [pk]
+  action_user UserAction [not null, default: 'no_data']
+  user_id String
+  User user
+  new_value Json
+  old_value Json
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String
+  updated_by String
+}
+
+Table web_news {
+  news_id String [pk]
+  page_id Int [not null]
+  pages web_pages [not null]
+  title String [not null]
+  brief String [not null]
+  image_id String [not null]
+  content String [not null]
+  is_top Boolean [not null, default: false]
+  is_publish Boolean [not null, default: false]
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  created_by String [not null]
+  update_by String [not null]
+}
+
+Table notifications {
+  notifiation_id String [pk]
+  user_id String [not null]
+  User user [not null]
+  link String [not null]
+  message String [not null]
+  is_new Boolean [not null, default: true]
+  is_badge Boolean [not null, default: true]
+  created_at DateTime [default: `now()`, not null]
+  created_by String [not null]
+}
+
+Table web_pages {
+  page_id Int [pk, increment]
+  page_name String [not null]
+  page_type Int [not null, default: 0]
+  created_at DateTime [default: `now()`, not null]
+  created_by String [not null]
+  news web_news [not null]
+}
+
+Table reference_list {
+  list_id Int [pk, increment]
+  list_name String [not null]
+  created_at DateTime [default: `now()`, not null]
+  listitems reference_listitem [not null]
+  JobReferenceList job_reference [not null]
+}
+
+Table reference_listitem {
+  listitem_id Int [pk, increment]
+  list_id Int [not null]
+  list reference_list [not null]
+  dictionary_id Int [not null]
+  code String
+  listitem_value String
+  parent_id Int
+  value String
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  customer_experiences customer_experience [not null]
+  Dictionary dictionary
+  dictionaryDictionaries_id String
+  JobReferenceList job_reference [not null]
+}
+
+Table user {
+  user_id String [pk]
+  email String [not null]
+  mobile String
+  name String
+  password_hash String [not null]
+  role UserRole [not null, default: 'no_data']
+  company_id Int [not null, default: 0]
+  customer_id String [unique]
+  attemptpass_count Int [default: 0]
+  reset_code String [not null, default: '']
+  is_emailverified Boolean [not null, default: false]
+  is_mobileverified Boolean [not null, default: false]
+  user_status UserStatus [not null, default: 'inactive_waitverify']
+  created_at DateTime [default: `now()`, not null]
+  updated_at DateTime [default: `now()`, not null]
+  deleted_at DateTime
+  Customer customer
+  loggers logger [not null]
+  from_inquiries inquiry [not null]
+  assign_inquiries inquiry [not null]
+  notifications notifications [not null]
+
+  indexes {
+    (email, mobile) [unique]
+  }
+}
+
+Enum Gender {
+  no_data
+  male
+  female
+}
+
+Enum CustomerStatus {
+  no_data
+}
+
+Enum CustomerExperienced {
+  no_data
+  no_work
+  have_work
+  one_company
+}
+
+Enum StatusVisa {
+  no_data
+}
+
+Enum LanguageLevel {
+  no_data
+  vative
+  near_native
+  business
+  daily_conversation
+  greeting
+}
+
+Enum JobPosition {
+  no_data
+  execute
+  manager
+  senior
+  staff
+  entry
+}
+
+Enum UserRole {
+  no_data
+  gtn_super_admin
+  gtn_admin
+  company_super_admin
+  company_admin
+  company_user
+  job_seeker
+}
+
+Enum UserStatus {
+  active
+  inactive_waitverify
+  inactive_changepass
+  suspended_attempt
+  suspended_admin
+  deleted
+}
+
+Enum UserAction {
+  no_data
+  manage
+  create
+  read
+  update
+  delete
+}
+
+Enum JobContractType {
+  no_data
+  full_time
+  part_time
+  contract
+  sub_contract
+  temporary
+  internship
+  other
+}
+
+Enum InquiryStatus {
+  open
+  reply
+  closed
+}
+
+Enum SalaryType {
+  no_data
+  hourly_wage
+  daily_wage
+  monthly_salary
+  annual_salary
+}
+
+Enum JobPublish {
+  public
+  private
+}
+
+Enum EmploymentStatus {
+  employee
+  contract_employee
+  outsourcing
+}
+
+Enum Smoke {
+  no_data
+  yes__no_smoking_on_site
+  yes__no_smoking_indoors_and_smoking_area_set_up_outdoors
+  yes__no_smoking_indoors
+  yes__smoking_room_installed_indoors
+  yes__working_in_smoking_areas
+  no_smoking_allowed
+}
+
+Enum FileSource {
+  content_image
+  page_image
+  user
+  user_avatar
+  user_image
+  user_other
+  other
+}
+
+Enum FileType {
+  image
+  video
+  pdf
+  gif
+  other
+}
+
+Ref: customer_education.customer_id > customer.customer_id
+
+Ref: customer_experience.jobdetail_id > customer_jobdetail.jobdetail_id
+
+Ref: customer_experience.skill_id > reference_listitem.listitem_id
+
+Ref: customer_jobdetail.customer_id > customer.customer_id
+
+Ref: customer_language.customer_id > customer.customer_id
+
+Ref: customer_qualification.customer_id > customer.customer_id
+
+Ref: customer_visa.customer_id > customer.customer_id
+
+Ref: customer_workhistory.customer_id > customer.customer_id
+
+Ref: entity_accountinfo.entity_id > entity.entity_id
+
+Ref: entity_branch.entity_id > entity.entity_id
+
+Ref: entity_detail.entity_id > entity.entity_id
+
+Ref: inquiry.fromuser_id > user.user_id
+
+Ref: inquiry.entity_id > entity.entity_id
+
+Ref: inquiry.assigned_user_id > user.user_id
+
+Ref: job.entity_branch_id > entity_branch.branch_id
+
+Ref: job_other_language.job_id > job.job_id
+
+Ref: job_reference.job_id > job.job_id
+
+Ref: job_reference.reference_list_id > reference_list.list_id
+
+Ref: job_reference.reference_list_item_id > reference_listitem.listitem_id
+
+Ref: job_candidate.job_id > job.job_id
+
+Ref: job_candidate.customer_id > customer.customer_id
+
+Ref: job_requirement.job_id > job.job_id
+
+Ref: logger.user_id > user.user_id
+
+Ref: web_news.page_id > web_pages.page_id
+
+Ref: notifications.user_id > user.user_id
+
+Ref: reference_listitem.list_id > reference_list.list_id
+
+Ref: reference_listitem.dictionaryDictionaries_id > dictionary.dictionaries_id
+
+Ref: user.customer_id - customer.customer_id

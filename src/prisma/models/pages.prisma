@@ -1,0 +1,10 @@
+model Pages {
+  page_id         Int           @id @default(autoincrement())
+  page_name       String
+  page_type       Int           @default(0)
+  created_at      DateTime      @default(now())
+  created_by      String
+  news            News[]
+
+  @@map("web_pages")
+}

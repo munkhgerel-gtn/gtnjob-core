@@ -1,0 +1,15 @@
+model CustomerLanguage {
+    language_id          String @default(uuid()) @id
+    customer_id          String
+    customer             Customer @relation(fields: [customer_id], references: [customer_id])
+    level                LanguageLevel? @default(no_data)
+    language             Int?
+    is_motherlanguage    Boolean @default(false)
+    certificate          Json?
+    created_at           DateTime @default(now())
+    updated_at           DateTime? @default(now())
+    created_by           String?
+    updated_b            String?
+
+    @@map("customer_language")
+}

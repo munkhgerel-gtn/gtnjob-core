@@ -1,0 +1,13 @@
+model ScoutFav {
+  scout_id              String  @id @default(uuid())
+  entity_id             Int?
+  branch_id             Int?
+  user_id               String
+  user                  User @relation(fields: [user_id], references: [user_id])
+  job_id                String?
+  note                  String
+  created_at            DateTime @default(now())
+  created_by            String
+
+  @@map("scout_fav")
+}

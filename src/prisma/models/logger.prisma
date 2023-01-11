@@ -1,0 +1,14 @@
+model Logger {
+    log_id      String     @id @default(uuid())
+    action_user UserAction @default(no_data)
+    user_id     String?
+    User        User?      @relation(fields: [user_id], references: [user_id])
+    new_value   Json?
+    old_value   Json?
+    created_at  DateTime   @default(now())
+    updated_at  DateTime   @default(now())
+    created_by  String?
+    updated_by  String?
+
+    @@map("logger")
+}

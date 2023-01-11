@@ -1,0 +1,72 @@
+model Job {
+    job_id               String @id @default(uuid())
+    created_at           DateTime @default(now())
+    updated_at           DateTime @default(now()) @updatedAt
+    created_by           String
+    updated_by           String?
+
+    // basic information
+    job_publish         JobPublish
+    job_references      JobReferenceList[]  // must references: [occupations, industries, prefectures, educations]; references: [benefits]       
+    location_details    String?
+
+    // recruitment conditions
+    career_level        JobPosition[]
+    benefit_other       String?
+    smoke               Smoke[]
+    employment_status   EmploymentStatus
+    japanese_level      LanguageLevel
+    english_level       LanguageLevel
+    job_other_languages JobOtherLanguage[]
+    experienced_count   Int
+    age_min             Int?
+    age_max             Int?
+    set_age_reason      String?
+    recruitment_type    ReqriutmentType?
+
+    // applciation requirements
+    job_title           String
+    job_description     String
+    japanese_percentage Int?
+    must_condition      String
+    want_condition      String?
+    position_name       String?
+    working_hour        String
+    salary_type         SalaryType
+    salary_min          Int?
+    salary_max          Int?
+    salary_detail       String
+    day_off             String?
+    progress_detail     String
+    entity_branch_id      Int
+    expire_date          DateTime?
+
+    entity_branch        EntityBranch? @relation(fields: [entity_branch_id], references: [branch_id])
+    job_candidates       JobCandidate[]
+
+    @@map("job")
+}
+
+model JobOtherLanguage {
+    job_other_language_id   String @id @default(uuid())
+    language_id             Int
+    language_level          LanguageLevel
+    job_id                  String
+
+    job                     Job @relation(fields: [job_id], references: [job_id])
+
+    @@map("job_other_language")
+}
+
+model JobReferenceList {
+    job_reference_id        String @id @default(uuid())
+    job_id                  String
+    reference_list_id       Int
+    reference_list_item_id  Int
+
+    job                     Job @relation(fields: [job_id], references: [job_id])
+    reference_list          ReferenceList @relation(fields: [reference_list_id], references: [list_id])
+    reference_list_item     ReferenceListItems @relation(fields: [reference_list_item_id], references: [listitem_id])
+
+    @@map("job_reference")
+}

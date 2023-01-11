@@ -1,0 +1,172 @@
+enum Gender {
+    no_data
+    male
+    female
+
+    @@map("gender_enum")
+}
+
+enum CustomerStatus {
+    no_data
+
+    @@map("customer_status_enum")
+}
+
+enum CustomerExperienced {
+    no_data
+    no_work
+    have_work
+    one_company
+
+    @@map("customer_experienced_enum")
+}
+
+enum StatusVisa {
+    no_data
+
+    @@map("customer_statusvisa_enum")
+}
+
+enum LanguageLevel {
+    no_data
+    vative
+    near_native
+    business
+    daily_conversation
+    greeting
+
+    @@map("language_level_enum")
+}
+
+enum JobPosition {
+    no_data
+    execute
+    manager
+    senior
+    staff
+    entry
+
+    @@map("job_position_enum")
+}
+
+enum UserRole {
+    no_data
+    gtn_super_admin
+    gtn_admin
+    company_super_admin
+    company_admin
+    company_user
+    job_seeker
+    @@map("user_role_enum")
+}
+
+enum UserStatus {
+    active
+    inactive_waitverify
+    inactive_changepass
+    suspended_attempt
+    suspended_admin
+    deleted
+
+    @@map("user_status_enum")
+}
+
+enum UserAction {
+    no_data
+    manage
+    create
+    read
+    update
+    delete
+
+    @@map("user_action_enum")
+}
+
+enum JobContractType {
+    no_data
+    full_time
+    part_time
+    contract
+    sub_contract
+    temporary
+    internship
+    other
+
+    @@map("job_contractype_enum")
+}
+
+enum InquiryStatus {
+    open
+    reply
+    closed
+
+    @@map("inquiry_status_enum")
+}
+
+enum SalaryType {
+    no_data
+    hourly_wage
+    daily_wage
+    monthly_salary
+    annual_salary
+
+    @@map("salary_type_enum")
+}
+
+enum JobPublish {
+    public
+    private
+
+    @@map("job_publish_enum")
+}
+
+enum EmploymentStatus {
+    employee
+    contract_employee
+    outsourcing
+
+    @@map("employment_status_enum")
+}
+
+enum Smoke {
+    no_data
+    yes__no_smoking_on_site
+    yes__no_smoking_indoors_and_smoking_area_set_up_outdoors
+    yes__no_smoking_indoors
+    yes__smoking_room_installed_indoors
+    yes__working_in_smoking_areas
+    no_smoking_allowed
+
+    @@map("smoke_enum")
+}
+
+enum FileSource {
+    content_image
+    page_image
+    user
+    user_avatar
+    user_image
+    user_cv
+    user_resume
+    user_portfolio
+    user_other
+    other
+
+    @@map("filesource_enum")
+}
+
+enum FileType {
+    image
+    video
+    pdf
+    gif
+    csv
+    other
+
+    @@map("filetype_enum")
+}
+
+enum ReqriutmentType {
+    direct
+    referral_company
+}

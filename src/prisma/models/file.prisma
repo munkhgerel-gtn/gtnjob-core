@@ -1,0 +1,12 @@
+model Files{
+  file_id         String           @id @default(uuid())
+  file_name       String
+  target_id       String
+  file_path       String
+  file_type       FileType
+  fiel_source     FileSource
+  created_at      DateTime         @default(now())
+  created_by      String
+
+  @@map("file_uploads")
+}

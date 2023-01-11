@@ -1,0 +1,20 @@
+model CustomerEducation {
+    education_id            String @default(uuid()) @id
+    customer                Customer? @relation(fields: [customer_id],references: [customer_id])
+    customer_id             String?
+    country                 String?
+    degree                  Json?
+    entrollment_date        DateTime?
+    graduate_date           DateTime?
+    is_current              Boolean?
+    school_id               Int?
+    school                  Json?
+    faculty                 String?
+    department              String?
+    created_at              DateTime @default(now())
+    updated_at              DateTime @default(now())
+    created_by              String?
+    updated_by              String?
+
+    @@map("customer_education")
+}
